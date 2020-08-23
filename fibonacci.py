@@ -1,21 +1,24 @@
-# Введите число, и программа сгенерирует последовательность Фибоначчи
-# до этого числа или до N-го числа.
+# Fibonacci sequence.
 
-def up_to_number(input_num):
-    fib_nums = [0, 1]
-    if input_num > 1:
-        while fib_nums[-1] < input_num:
-            next_num = fib_nums[-2] + fib_nums[-1]
-            fib_nums.append(next_num)
-        return fib_nums [:-1]
-    elif input_num == 1:
-        return fib_nums
+
+def up_to_index(index):
+    "This function return the Fibonacci sequence up to N-element."
+    if index >= 0:
+        fib_sequence = [0, 1]
+        if index == 1:
+            return fib_sequence[0]
+        elif index == 2:
+            return fib_sequence
+        else:
+            for i in range(index - 2):
+                fib_sequence.append(fib_sequence[-2] + fib_sequence[-1])
+            return fib_sequence
     else:
-        return 'Необходимо ввести натуральное число!'
+        return 'You must enter a natural number!'
 
 
 if __name__ == '__main__':
     try:
-        print(up_to_number(int(input('Введите натуральное число: '))))
+        print (up_to_index(int(input('N: '))))
     except ValueError:
-        print('Необходимо ввести натуральное число!')
+        print ('You must enter a natural number!')
