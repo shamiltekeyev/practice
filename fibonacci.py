@@ -1,4 +1,4 @@
-# Fibonacci sequence.
+# The Fibonacci sequence.
 
 
 def up_to_index(index):
@@ -19,6 +19,6 @@ def up_to_index(index):
 
 if __name__ == '__main__':
     try:
-        print (up_to_index(int(input('N: '))))
+        print(up_to_index(int(input('N: '))))
     except ValueError:
-        print ('You must enter a natural number!')
+        print('You must enter a natural number!')
