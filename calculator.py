@@ -1,37 +1,38 @@
 # Calculator
 
 
-def get_operation():
-    signs = ['+', '-', '*', '/', 'q']
-    while True:
-        sign = input('Operation sign: ')
-        if sign not in signs:
-            print('Correct signs: "+", "-", "*", "/" or "q" to exit.')
-            continue
-        elif sign == 'q':
-            exit()
-        else:
-            try:
-                num_1 = float(input('First number: '))
-                num_2 = float(input('Second number: '))
-                return num_1, num_2, sign
-            except ValueError:
-                print('You must enter a number!')
+def valid_operation_sign(sign):
+    correct_signs = ['+', '-', '*', '/']
+    return True if sign in correct_signs else False
+
+def valid_operation_nums(first, second):
+    first_is_num, second_is_num = first.isdigit(), second.isdigit()
+    return first_is_num and second_is_num
 
 
-def calculate():
-    while True:
-        num_1, num_2, sign = get_operation()
+def calculate(first, second, sign):
+    is_sign = valid_operation_sign(sign)
+    is_nums = valid_operation_nums(first, second)
+    if is_sign and is_nums:
+        a, b = float(first), float(second)
         if sign == '+':
-            result = num_1 + num_2
+            result = a + b
         elif sign == '-':
-            result = num_1 - num_2
+            result = a - b
         elif sign == '*':
-            result = num_1 * num_2
+            result = a * b
         elif sign == '/':
-            result = num_1 / num_2
-        print(f'Result: {str(result)}\n')
+            result = a / b
+        return result
+    else:
+        print('No sign!')
+
+
+def main():
+    while True:
+        print(f'Result: {calculate("1", "2", "+")}')
+        break
 
 
 if __name__ == '__main__':
-    calculate()
+    main()
